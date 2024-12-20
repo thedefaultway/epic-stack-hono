@@ -18,10 +18,6 @@ if (SENTRY_ENABLED) {
 	void import('./utils/monitoring.ts').then(({ init }) => init())
 }
 
-if (process.env.MOCKS === 'true') {
-	await import('../tests/mocks/index.ts')
-}
-
 export default await createHonoServer({
 	defaultLogger: false,
 	getLoadContext: (c, _) => ({ cspNonce: c.get('cspNonce') }),
