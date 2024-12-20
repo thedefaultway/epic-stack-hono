@@ -33,3 +33,7 @@ server/
 3. **Production Mode:**
    - Build your application with `npm run build`
    - Run `npm run start` to start the production server.
+
+
+https://github.com/user-attachments/assets/1d996f84-c39b-4e8a-ae35-a90d4ff0d010
+
