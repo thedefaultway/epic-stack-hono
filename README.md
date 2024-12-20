@@ -1,2 +1,1 @@
-# epic-stack-hono
-Epic Stack + Hono
+# Epic Stach + Hono
