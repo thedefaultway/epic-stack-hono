@@ -156,8 +156,7 @@ export function DeleteNote({ id }: { id: string }) {
 	const isPending = useIsPending()
 	const [form] = useForm({
 		id: 'delete-note',
-		lastResult:
-			actionData && 'result' in actionData ? actionData?.result : null,
+		lastResult: actionData?.result,
 	})
 
 	return (

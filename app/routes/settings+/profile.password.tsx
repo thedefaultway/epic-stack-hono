@@ -120,7 +120,7 @@ export default function ChangePasswordRoute() {
 	const [form, fields] = useForm({
 		id: 'password-change-form',
 		constraint: getZodConstraint(ChangePasswordForm),
-		lastResult: actionData && 'result' in actionData ? actionData.result : null,
+		lastResult: actionData?.result,
 		onValidate({ formData }) {
 			return parseWithZod(formData, { schema: ChangePasswordForm })
 		},

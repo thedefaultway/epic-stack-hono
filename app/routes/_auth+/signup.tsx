@@ -125,7 +125,7 @@ export default function SignupRoute() {
 	const [form, fields] = useForm({
 		id: 'signup-form',
 		constraint: getZodConstraint(SignupSchema),
-		lastResult: actionData && 'result' in actionData ? actionData.result : null,
+		lastResult: actionData?.result,
 		onValidate({ formData }) {
 			const result = parseWithZod(formData, { schema: SignupSchema })
 			return result

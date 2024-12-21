@@ -1,5 +1,5 @@
 import { createId as cuid } from '@paralleldrive/cuid2'
-import { createCookieSessionStorage, redirect } from 'react-router';
+import { createCookieSessionStorage, redirect } from 'react-router'
 import { z } from 'zod'
 import { combineHeaders } from './misc.tsx'
 
@@ -31,7 +31,7 @@ export async function redirectWithToast(
 	toast: ToastInput,
 	init?: ResponseInit,
 ) {
-	return redirect(url, {
+	throw redirect(url, {
 		...init,
 		headers: combineHeaders(init?.headers, await createToastHeaders(toast)),
 	})

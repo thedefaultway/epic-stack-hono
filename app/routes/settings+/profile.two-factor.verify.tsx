@@ -142,7 +142,7 @@ export default function TwoFactorRoute() {
 	const [form, fields] = useForm({
 		id: 'verify-form',
 		constraint: getZodConstraint(ActionSchema),
-		lastResult: actionData && 'result' in actionData ? actionData.result : null,
+		lastResult: actionData?.result,
 		onValidate({ formData }) {
 			return parseWithZod(formData, { schema: ActionSchema })
 		},
