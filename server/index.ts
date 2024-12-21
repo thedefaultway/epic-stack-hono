@@ -23,7 +23,6 @@ export default await createHonoServer({
 	getLoadContext: (c, _) => ({ cspNonce: c.get('cspNonce') }),
 
 	configure: (server) => {
-		server.use('*', epicLogger())
 		server.use(removeTrailingSlash)
 
 		server.use('*', async (c, next) => {
@@ -39,6 +38,8 @@ export default await createHonoServer({
 		server.use(cspNonceMiddleware)
 		server.use('*', secureHeadersMiddleware)
 		server.use('*', rateLimitMiddleware)
+		server.use('*', epicLogger())
+
 		server.use('*', poweredBy({ serverName: 'EPIC STACK' }))
 
 		server.on('GET', ['/favicons/*', '/img/*'], (c) => {
