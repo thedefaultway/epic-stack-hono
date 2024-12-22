@@ -24,7 +24,10 @@ if (process.env.MOCKS === 'true' && IS_DEV) {
 export default await createHonoServer({
 	app: new Hono(),
 	defaultLogger: false,
-	getLoadContext: (c, _) => ({ cspNonce: c.get('cspNonce') }),
+	getLoadContext: (c, { build }) => ({
+		cspNonce: c.get('cspNonce'),
+		serverBuild: build,
+	}),
 
 	configure: (server) => {
 		server.use('*', epicLogger())
