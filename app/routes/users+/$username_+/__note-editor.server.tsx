@@ -1,11 +1,12 @@
 import { parseWithZod } from '@conform-to/zod'
 import { type FileUpload, parseFormData } from '@mjackson/form-data-parser'
 import { createId as cuid } from '@paralleldrive/cuid2'
-import { data, redirect, type ActionFunctionArgs } from 'react-router'
+import { data, redirect } from 'react-router'
 import { z } from 'zod'
 import { requireUserId } from '#app/utils/auth.server.ts'
 import { prisma } from '#app/utils/db.server.ts'
 import { uploadHandler } from '#app/utils/uploads.server.ts'
+import { type Route } from './+types/notes.$noteId_.edit.ts'
 import {
 	// MAX_UPLOAD_SIZE,
 	NoteEditorSchema,
@@ -24,7 +25,7 @@ function imageHasId(
 	return image.id != null
 }
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({ request }: Route.ActionArgs) {
 	const userId = await requireUserId(request)
 	const formData = await parseFormData(request, async (file: FileUpload) =>
 		uploadHandler(file),
