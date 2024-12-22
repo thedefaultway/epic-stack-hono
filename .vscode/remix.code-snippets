@@ -71,9 +71,9 @@
 		"prefix": "/shouldRevalidate",
 		"scope": "typescriptreact,javascriptreact,typescript,javascript",
 		"body": [
-			"import { type Route } from \"./+types/${TM_FILENAME_BASE}.ts\"",
+			"import { type ShouldRevalidateFunctionArgs } from 'react-router'",
 			"",
-			"export function shouldRevalidate({ defaultShouldRevalidate }: Route.ShouldRevalidateArg) {",
+			"export function shouldRevalidate({ defaultShouldRevalidate }: ShouldRevalidateFunctionArgs) {",
 			"  return defaultShouldRevalidate",
 			"}",
 		],
