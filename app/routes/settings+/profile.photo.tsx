@@ -66,8 +66,10 @@ export async function loader({ request }: Route.LoaderArgs) {
 export async function action({ request }: Route.ActionArgs) {
 	const userId = await requireUserId(request)
 
-	const formData = await parseFormData(request, async (file: FileUpload) =>
-		uploadHandler(file),
+	const formData = await parseFormData(
+		request,
+		async (file: FileUpload) => uploadHandler(file),
+		{ maxFileSize: MAX_SIZE },
 	)
 
 	const submission = await parseWithZod(formData, {

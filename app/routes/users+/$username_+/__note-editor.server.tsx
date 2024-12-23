@@ -8,7 +8,7 @@ import { prisma } from '#app/utils/db.server.ts'
 import { uploadHandler } from '#app/utils/uploads.server.ts'
 import { type Route } from './+types/notes.$noteId_.edit.ts'
 import {
-	// MAX_UPLOAD_SIZE,
+	MAX_UPLOAD_SIZE,
 	NoteEditorSchema,
 	type ImageFieldset,
 } from './__note-editor'
@@ -27,8 +27,10 @@ function imageHasId(
 
 export async function action({ request }: Route.ActionArgs) {
 	const userId = await requireUserId(request)
-	const formData = await parseFormData(request, async (file: FileUpload) =>
-		uploadHandler(file),
+	const formData = await parseFormData(
+		request,
+		async (file: FileUpload) => uploadHandler(file),
+		{ maxFileSize: MAX_UPLOAD_SIZE },
 	)
 
 	const submission = await parseWithZod(formData, {
