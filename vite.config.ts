@@ -1,6 +1,5 @@
 import { reactRouter } from '@react-router/dev/vite'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
-import { glob } from 'glob'
 import { reactRouterHonoServer } from 'react-router-hono-server/dev' // add this
 import { envOnlyMacros } from 'vite-env-only'
 import { type ViteUserConfig } from 'vitest/config'
@@ -50,7 +49,7 @@ export default {
 						},
 					},
 					sourcemaps: {
-						filesToDeleteAfterUpload: await glob([
+						filesToDeleteAfterUpload: ([
 							'./build/**/*.map',
 							'.server-build/**/*.map',
 						]),

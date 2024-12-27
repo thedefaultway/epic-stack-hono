@@ -13,6 +13,7 @@ import {
 	useMatches,
 	useSubmit,
 } from 'react-router'
+import { ClientOnly } from 'remix-utils/client-only'
 import { HoneypotProvider } from 'remix-utils/honeypot/react'
 import { type Route } from './+types/root.ts'
 import appleTouchIconAssetUrl from './assets/favicons/apple-touch-icon.png'
@@ -239,7 +240,13 @@ function App() {
 					<ThemeSwitch userPreference={data.requestInfo.userPrefs.theme} />
 				</div>
 			</div>
+			<ClientOnly>
+
+   {()=> (
+
 			<EpicToaster closeButton position="top-center" theme={theme} />
+   )}
+			</ClientOnly>
 			<EpicProgress />
 		</>
 	)
